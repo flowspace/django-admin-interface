@@ -4,6 +4,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.1](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.14.1) - 2020-11-12
+-  Fixed sticky list-filter floating. #100
+
+## [0.14.0](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.14.0) - 2020-10-15
+-  Added list filter sticky option (only for `django >= 3.1.2`).
+-  Enabled list filter dropdown by default.
+-  Fixed changelist searchbar style.
+
+## [0.13.7](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.7) - 2020-10-14
+-  Improved responsive widgets style.
+-  Prevented body horizontal scroll.
+-  Fixed tabular inline horizontal scroll.
+-  Fixed changelist filter min-width.
+-  Fixed changelist and toolbar theme rounded corners.
+-  Fixed calendar and timelist buttons theme color.
+-  Fixed list filter select size.
+-  Fixed content max-width with `django >= 3.1`.
+
+## [0.13.6](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.6) - 2020-10-14
+-  Added persian language. #98
+-  Fixed logo max-width on small screens.
+-  Fixed content max-width when nav-sidebar is collapsed.
+-  Fixed changelist max-width on medium screens.
+
+## [0.13.5](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.5) - 2020-09-15
+-  Fixed loaddata error with initial_data.json fixture. #97
+-  Fixed tests warning (admin.W411).
+-  Fixed changelist thead links color.
+-  Fixed changelist filter links hover color.
+
+## [0.13.4](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.4) - 2020-09-04
+-  Added conditional imports to avoid Django deprecation warnings. #92
+-  Changed admin header content vertical align to top.
+
+## [0.13.3](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.3) - 2020-09-02
+-  Added `django-json-widget` theming support.
+
+## [0.13.2](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.2) - 2020-08-21
+-  Fixed related modal not closing on edit save and create with django 3.1 - #96
+
+## [0.13.1](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.1) - 2020-08-18
+-  Improved header and nav-sidebar style.
+-  Added `max-width` to logo.
+-  Added `requirements-dev.txt`
+
 ## [0.13.0](https://github.com/fabiocaccamo/django-admin-interface/releases/tag/0.13.0) - 2020-08-05
 -  Improved nav-sidebar style (`django>=3.1` support).
 -  Improved header style.

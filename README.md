@@ -4,7 +4,7 @@
 [![](https://img.shields.io/pypi/v/django-admin-interface.svg?color=blue&logo=pypi&logoColor=white)](https://pypi.org/project/django-admin-interface/)
 [![](https://pepy.tech/badge/django-admin-interface)](https://pepy.tech/project/django-admin-interface)
 [![](https://img.shields.io/github/stars/fabiocaccamo/django-admin-interface?logo=github)](https://github.com/fabiocaccamo/django-admin-interface/)
-[![](https://badges.pufler.dev/visits/fabiocaccamo/django-admin-interface?label=views&color=blue)](https://badges.pufler.dev)
+[![](https://badges.pufler.dev/visits/fabiocaccamo/django-admin-interface?label=visitors&color=blue)](https://badges.pufler.dev)
 [![](https://img.shields.io/pypi/l/django-admin-interface.svg?color=blue)](https://github.com/fabiocaccamo/django-admin-interface/blob/master/LICENSE.txt)
 
 [![](https://img.shields.io/travis/fabiocaccamo/django-admin-interface?logo=travis&label=build)](https://travis-ci.org/fabiocaccamo/django-admin-interface)
@@ -29,6 +29,7 @@ django-admin-interface is a modern **responsive flat admin interface customizabl
 - Compatibility / Style optimizations for:
   - `django-ckeditor`
   - `django-dynamic-raw-id`
+  - `django-json-widget`
   - `django-modeltranslation`
   - `django-tabbed-admin`
   - `sorl-thumbnail`
@@ -105,7 +106,47 @@ You can add a theme you've created through the admin to this repository by [send
 
 You can use [django-apptemplates](https://github.com/bittner/django-apptemplates), then add `{% extends "admin_interface:admin/base_site.html" %}` to your `base_site.html`
 
----
+## Testing
+```bash
+# create python virtual environment
+virtualenv testing_django_admin_interface
+
+# activate virtualenv
+cd testing_django_admin_interface && . bin/activate
+
+# clone repo
+git clone https://github.com/fabiocaccamo/django-admin-interface.git src && cd src
+
+# install dependencies
+pip install -r requirements.txt
+
+# run tests
+tox
+# or
+python setup.py test
+# or
+python -m django test --settings "tests.settings"
+```
 
 ## License
 Released under [MIT License](LICENSE.txt).
+
+---
+
+## See also
+
+- [`django-colorfield`](https://github.com/fabiocaccamo/django-colorfield) - simple color field for models with a nice color-picker in the admin. 🎨
+
+- [`django-extra-settings`](https://github.com/fabiocaccamo/django-extra-settings) - config and manage typed extra settings using just the django admin. ⚙️
+
+- [`django-maintenance-mode`](https://github.com/fabiocaccamo/django-maintenance-mode) - shows a 503 error page when maintenance-mode is on. 🚧 🛠️
+
+- [`django-redirects`](https://github.com/fabiocaccamo/django-redirects) - redirects with full control. ↪️
+
+- [`django-treenode`](https://github.com/fabiocaccamo/django-treenode) - probably the best abstract model / admin for your tree based stuff. 🌳
+
+- [`python-benedict`](https://github.com/fabiocaccamo/python-benedict) - dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities. 📘
+
+- [`python-codicefiscale`](https://github.com/fabiocaccamo/python-codicefiscale) - encode/decode Italian fiscal codes - codifica/decodifica del Codice Fiscale. 🇮🇹 💳
+
+- [`python-fsutil`](https://github.com/fabiocaccamo/python-fsutil) - file-system utilities for lazy devs. 🧟‍♂️

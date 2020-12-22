@@ -2,8 +2,12 @@
 
 from admin_interface.models import Theme
 
+import django
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+if django.VERSION < (2, 0):
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import gettext_lazy as _
 
 
 class ThemeAdmin(admin.ModelAdmin):
@@ -108,7 +112,10 @@ class ThemeAdmin(admin.ModelAdmin):
         }),
         (_('List Filter'), {
             'classes': ('wide', ),
-            'fields': ('list_filter_dropdown', )
+            'fields': (
+                'list_filter_dropdown',
+                'list_filter_sticky',
+            )
         }),
         (_('Recent Actions'), {
             'classes': ('wide', ),

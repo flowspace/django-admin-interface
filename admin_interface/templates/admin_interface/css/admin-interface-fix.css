@@ -1,3 +1,7 @@
+.admin-interface {
+    overflow-x: hidden;
+}
+
 /* fix login */
 .admin-interface.login #container {
     width: 100%;
@@ -67,13 +71,12 @@
 }
 /* end login fix*/
 
-
 .admin-interface #header {
     height:auto;
     min-height:40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 @media (max-width:1024px) {
@@ -83,11 +86,18 @@
 }
 
 .admin-interface #branding h1 img.logo {
+    max-width: 400px;
     max-height:100px;
     margin-top:10px;
     margin-bottom:10px;
     margin-right:15px;
     display:inline-block !important; /* override inline display:none; */
+}
+
+@media (max-width:400px) {
+    .admin-interface #branding h1 img.logo {
+        max-width: 100%;
+    }
 }
 
 .admin-interface #branding h1 span {
@@ -202,6 +212,7 @@ body.admin-interface .paginator a.showall:visited {
     .admin-interface form .form-row p.file-upload .clearable-file-input {
         display: block;
         margin-top: 10px;
+        margin-left: 0;
         margin-bottom: -10px;
     }
 
@@ -242,13 +253,18 @@ body.admin-interface .paginator a.showall:visited {
 
 /* LIST FILTER */
 .admin-interface .module.filtered h2 {
-    border-bottom-left-radius:0;
-    border-bottom-right-radius:0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .admin-interface .module.filtered #changelist-filter {
-    border-bottom-left-radius:4px;
-    border-bottom-right-radius:4px;
+    min-width: 240px;
+}
+
+@media (max-width: 1024px) {
+    .admin-interface .module.filtered #changelist-filter {
+        min-width: 200px;
+    }
 }
 
 .admin-interface .module.filtered #changelist-filter h2 {
@@ -293,6 +309,23 @@ body.admin-interface .paginator a.showall:visited {
 }
 /* end fix */
 
+/* begin fix tabular inlines horizontal scroll */
+.admin-interface .inline-related.tabular fieldset.module {
+    display: block;
+    overflow-x: scroll;
+    width: 100%;
+    white-space: nowrap;
+    position: relative;
+}
+.admin-interface .inline-related.tabular fieldset.module h2 {
+    position: sticky;
+    left: 0;
+}
+.admin-interface .inline-related.tabular fieldset.module table tbody tr {
+    position: relative;
+}
+/* end fix */
+
 .admin-interface .inline-related h3 {
     padding:6px 10px;
 }
@@ -334,17 +367,6 @@ body.admin-interface .paginator a.showall:visited {
     background-color:#AAAAAA;
 }
 
-/* fix textarea horizontal scroll on Firefox */
-@media (max-width: 767px){
-    .admin-interface .aligned .form-row textarea {
-        width: 100% !important;
-        flex: 0 1 auto;
-    }
-    .admin-interface .aligned .form-row input[type="file"] {
-        width: 100% !important;
-    }
-}
-
 /* improve responsive selector */
 
 /* fix [stacked, not-stacked] equalize horizontal and vertical select padding for selector */
@@ -368,13 +390,13 @@ body.admin-interface .paginator a.showall:visited {
 
 /* fix nav-sidebar (added in django 3.1.0) */
 .admin-interface #toggle-nav-sidebar {
-    top: 11px;
+    top: 10px;
     left: 0;
     z-index: 20;
     flex: 0 0 30px;
     width: 30px;
-    height: 40px;
-    margin-top: 11px;
+    height: 45px;
+    margin-top: 10px;
     margin-right: 10px;
     background-color: #FFFFFF;
     font-size: 16px;
@@ -384,10 +406,16 @@ body.admin-interface .paginator a.showall:visited {
     -webkit-box-shadow: 4px 2px 8px -4px #DBDBDB;
     -moz-box-shadow: 4px 2px 8px -4px #DBDBDB;
     box-shadow: 4px 2px 8px -4px #DBDBDB;
+    transition: left .3s;
 }
 
 .admin-interface .toggle-nav-sidebar::before {
     margin-top: -2px;
+}
+
+.admin-interface .main > #nav-sidebar + .content,
+.admin-interface .main.shifted > #nav-sidebar + .content {
+    max-width: 100%;
 }
 
 /* hide nav-sidebar below 1280px to prevent horizontal overflow issues */
@@ -405,10 +433,11 @@ body.admin-interface .paginator a.showall:visited {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    padding: 18px 40px 40px 0px;
+    padding: 40px 40px 40px 0px;
     border-top: none;
     border-bottom: none;
     border-left: none;
+    transition: left .3s, margin-left .3s;
 }
 
 @media (min-width:1280px) {
@@ -419,37 +448,12 @@ body.admin-interface .paginator a.showall:visited {
         left: 0px;
         margin-left: 0;
     }
+    .admin-interface #main:not(.shifted) > .content {
+        max-width: 100%;
+    }
     .admin-interface.change-list:not(.popup) #main.shifted > .content,
     .admin-interface.change-form:not(.popup) #main.shifted > .content {
         max-width: calc(100% - 360px);
-    }
-}
-
-/* fix related-widget when the nav-sidebar is collapsed */
-@media (max-width:1100px) {
-    .admin-interface.change-form #main .related-widget-wrapper {
-        clear: left;
-        margin-top: 5px;
-    }
-    .admin-interface.change-form #main .related-widget-wrapper + .help {
-        margin-top: 10px;
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-/* fix related-widget when the nav-sidebar is expanded */
-@media (min-width:1280px) and (max-width:1480px) {
-    .admin-interface.change-form:not(.popup) .related-widget-wrapper {
-        clear: left;
-        margin-top: 5px;
-    }
-    .admin-interface.change-form #main.shifted .related-widget-wrapper + .help {
-        margin-top: 10px;
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
     }
 }
 
@@ -461,4 +465,92 @@ body.admin-interface .paginator a.showall:visited {
 
 .admin-interface #nav-sidebar .current-model {
     background: #FFFFCC;
+}
+
+/* fixed related widget and select2 */
+.admin-interface .aligned .form-row .related-widget-wrapper {
+    white-space: nowrap;
+}
+
+.admin-interface .aligned .form-row .related-widget-wrapper .select2-container ~ .related-widget-wrapper-link {
+    margin-left: 0;
+    padding: 4px 8px 6px 8px;
+}
+
+.admin-interface .aligned .form-row .related-widget-wrapper .select2-container + .related-widget-wrapper-link {
+    margin-left: 5px !important;
+}
+
+/* fixed time widget header border radius */
+.admin-interface .clockbox.module h2 {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* fix searchbar overriden padding */
+.admin-interface #changelist #changelist-search #searchbar {
+    padding: 2px 5px 3px 5px;
+}
+
+@media (max-width: 1024px) {
+    .admin-interface #changelist #toolbar {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+    /* fixed changelist search size when there are search results and .quiet is visible */
+    .admin-interface #changelist-search label img {
+        margin-top: 2px;
+    }
+    .admin-interface #changelist-search .quiet {
+        margin: 0 0 0 10px;
+        align-self: center;
+        flex-basis: content;
+    }
+}
+
+@media (max-width: 767px) {
+    /* fixed responsive widgets */
+    .admin-interface .aligned.collapsed .form-row {
+        display: none;
+    }
+
+    .admin-interface .aligned .form-row > div {
+        display: flex;
+        max-width: 100vw;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-interface .aligned .form-row .help {
+        margin-left: 0;
+    }
+
+    .admin-interface .aligned .form-row .checkbox-row label {
+        margin: 10px 0 0 0;
+        padding: 0;
+    }
+
+    .admin-interface .aligned .form-row input[type="file"],
+    .admin-interface .aligned .form-row input[type="text"],
+    .admin-interface .aligned .form-row input[type="email"] {
+        width: 100%;
+    }
+
+    /* fix textarea horizontal scroll on Firefox */
+    .admin-interface .aligned .form-row textarea {
+        width: 100% !important;
+        flex: 0 1 auto;
+    }
+
+    .admin-interface .aligned .form-row .datetime input[type="text"] {
+        width: 50%;
+    }
+
+    .admin-interface .aligned .form-row span + .file-upload {
+        margin-top: 10px;
+    }
+
+    .admin-interface .aligned .form-row .file-upload input[type="file"] {
+        margin-top: 5px;
+    }
 }
